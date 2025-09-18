@@ -12,9 +12,10 @@ describe("fetchData", () => {
         fetch.mockClear();
     });
 
-    test("Fetches dat form the API endpoint and returns it as JSON", () => {
+    test("Fetches dat form the API endpoint and returns it as JSON", async () => {
         //AAA pattern
-        // arrange
+
+        // ARRANGE
         // Mock response
 
         const mockResponse = {
@@ -23,11 +24,13 @@ describe("fetchData", () => {
             title: "delectus aut autem",
             completed: false,
         };
-
         fetch.mockResolvedValueOnce({
             ok: true,
             json: jest.fn().mockResolvedValueOnce(mockResponse),
         });
+
+        // ACTION
+        const data = await fetchData("");
 
         console.log(mockResponse);
     });
