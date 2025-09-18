@@ -1,4 +1,5 @@
 //import the function to be tested
+const { json } = require("express");
 const fetchData = require("../functions/apiData.js");
 
 //Mock this global fetch function
@@ -22,6 +23,11 @@ describe("fetchData", () => {
             title: "delectus aut autem",
             completed: false,
         };
+
+        fetch.mockResolvedValueOnce({
+            ok: true,
+            json: jest.fn().mockResolvedValueOnce(mockResponse),
+        });
 
         console.log(mockResponse);
     });
