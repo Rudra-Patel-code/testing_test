@@ -1,37 +1,51 @@
 //import the function to be tested
-const { json } = require("express");
-const fetchData = require("../functions/apiData.js");
+const { fetchData } = require("../functions/apiData.js");
 
 //Mock this global fetch function
 global.fetch = jest.fn();
 
 //test suite
 describe("fetchData", () => {
-    beforeEach(() => {
-        //clear the object before running the test again.
-        fetch.mockClear();
+  beforeEach(() => {
+    //clear the object before running the test again.
+    fetch.mockClear();
+  });
+
+  test("fetches data from the API endpoint and returns it as JSON", async () => {
+    /*AAA pattern
+          Arrange
+          Mock response*/
+    const mockResponse = {
+      userId: 1,
+      id: 1,
+      title: "delectus aut autem",
+      completed: false,
+    };
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: jest.fn().mockResolvedValueOnce(mockResponse),
     });
 
-    test("Fetches dat form the API endpoint and returns it as JSON", async () => {
-        //AAA pattern
+    //Action
+    const data = await fetchData(
+      "https://jsonplaceholder.typicode.com/todos/1",
+    );
 
-        // ARRANGE
-        // Mock response
+    //Assert
+    expect(data).toEqual(mockResponse);
+    expect(fetch).toHaveBeenCalledWith(
+      "https://jsonplaceholder.typicode.com/todos/1",
+    );
+  });
 
-        const mockResponse = {
-            userId: 1,
-            id: 1,
-            title: "delectus aut autem",
-            completed: false,
-        };
-        fetch.mockResolvedValueOnce({
-            ok: true,
-            json: jest.fn().mockResolvedValueOnce(mockResponse),
-        });
+  //test for negative testing
+  test("throws an error when response is not okay", async () => {
+    //Assemble and action
+    fetch.mockResolvedValueOnce({ ok: false });
 
-        // ACTION
-        const data = await fetchData("");
-
-        console.log(mockResponse);
-    });
+    //Assert
+    await expect(
+      fetchData("https://jsonplaceholder.typicode.com/todos/1"),
+    ).rejects.toThrow("There was a networking error");
+  });
 });

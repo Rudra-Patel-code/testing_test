@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1758237911570" clover="3.2.0">
-  <project timestamp="1758237911570" name="All files">
-    <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="4" coveredelements="4" complexity="0" loc="3" ncloc="3" packages="1" files="1" classes="1"/>
+<coverage generated="1758842892355" clover="3.2.0">
+  <project timestamp="1758842892355" name="All files">
+    <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="13" coveredelements="13" complexity="0" loc="9" ncloc="9" packages="1" files="2" classes="2"/>
     <file name="add.js" path="/home/rudra/Desktop/college/testin_class/testing_project/src/functions/add.js">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="apiData.js" path="/home/rudra/Desktop/college/testin_class/testing_project/src/functions/apiData.js">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
