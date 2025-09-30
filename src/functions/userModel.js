@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 // creating a user schema
-
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -11,4 +10,25 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("Users", userSchema);
 
-module.exports = { User };
+
+
+// controller file for user creation object
+exports.createUser = async (firstName, email, password, age) => {
+  try {
+    const user = new User({
+      firstName,
+      email,
+      password,
+      age
+    })
+
+  } catch (error) {
+    throw new Error("Something went wrong in creating new user.")
+  }
+
+}
+
+
+
+
+// module.exports = { User };
